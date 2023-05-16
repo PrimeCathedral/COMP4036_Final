@@ -1,7 +1,7 @@
 body {
   #animation {
-    background-image: url('../images/Perry.mp4');
+    background-image: url('../images/Perry2.gif');
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: 25%;
   }
 }

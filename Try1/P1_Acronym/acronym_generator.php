@@ -2,13 +2,27 @@
 <html>
   <head>
 
+    <!-- Javascript -->
+    <script src = "./acronym_generator.js" ></script>
+
+
+    <link rel="stylesheet" href="wallpaper.css">
   </head>
   <body>
+  
+  <h1>Acronym Generator</h1>
+    <h2>JavaScript</h2>
+    <p>Enter the full meaning of an organization or concept:</p>
+    <input type="text" id="fullMeaningInput">
+    <button onclick="generateAcronym()">Generate Acronym</button>
+    <p id="acronymOutput"></p>
 
+
+    <h2>PHP</h2>
     <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
       <p>Enter the full meaning of an organization or concept:</p>
       <input type="text" name="fullMeaning">
-      <br><br>
+      
       <input type="submit" value="Generate Acronym">
     </form>
     <?php
@@ -22,5 +36,8 @@
         echo "<p>The acronym for $fullMeaning is $acronym</p>";
       }
     ?>
+    <br><br>
+    <!-- Just a cool Perry the platypus GIF -->
+    <img src="../images/Perry2.gif" alt="Perry the inspector gadget" width="200" height="200">
   </body>
 </html>
