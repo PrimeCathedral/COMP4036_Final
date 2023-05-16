@@ -1,0 +1,7 @@
+body {
+  #animation {
+    background-image: url('../images/Perry.mp4');
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+}
