@@ -1,67 +1,37 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>CV Information</title>
+  <title>CV Presentation</title>
+  <!-- Javascript for generating resume -->
+  <script src="./CV.js" defer></script>
+
+  <!-- HTML 2 PDF script -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" 
+  integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" 
+  crossorigin="anonymous" 
+  referrerpolicy="no-referrer"></script>
+
+  <script src="html2pdf.bundle.min.js"></script>
+
 </head>
 <body>
-  <h1>CV Information</h1>
-  <p>Full Name: <span id="fullName"></span></p>
-  <p>Phone Number: <span id="phoneNumber"></span></p>
-  <p>Email Address: <span id="emailAddress"></span></p>
-  <p>Objective: <span id="objective"></span></p>
-  <h2>Education</h2>
-  <ul id="education"></ul>
-  <h2>Work Experience</h2>
-  <ul id="workExperience"></ul>
-  <h2>Skills</h2>
-  <ul id="skills"></ul>
-  <h2>Achievements and Awards</h2>
-  <ul id="achievementsAndAwards"></ul>
-  <h2>Projects</h2>
-  <ul id="projects"></ul>
+    <!-- This button pints to PDF whatever is in the container below it -->
+    <button id="download-button">Download as PDF</button>
+    <div id="invoice">
+        <h1>CV Presentation</h1>
+        <div id="cvContainer"></div>
+    </div>
+    <script>
+        const button = document.getElementById('download-button');
 
-  <script src="./cv_data.csv"></script>
-  <script>
-    // Update the HTML elements with the CV information from cv.js
-    document.getElementById('fullName').textContent = cv.fullName;
-    document.getElementById('phoneNumber').textContent = cv.phoneNumber;
-    document.getElementById('emailAddress').textContent = cv.emailAddress;
-    document.getElementById('objective').textContent = cv.objective;
+        function generatePDF() {
+            // Choose the element that your content will be rendered to.
+            const element = document.getElementById('invoice');
+            // Choose the element and save the PDF for your user.
+            html2pdf().from(element).save();
+        }
 
-    const educationList = document.getElementById('education');
-    cv.education.forEach(edu => {
-      const listItem = document.createElement('li');
-      listItem.textContent = `${edu.degree} (${edu.institution}) - ${edu.graduationDate}`;
-      educationList.appendChild(listItem);
-    });
-
-    const workExperienceList = document.getElementById('workExperience');
-    cv.workExperience.forEach(exp => {
-      const listItem = document.createElement('li');
-      listItem.textContent = `${exp.jobTitle} - ${exp.company} (${exp.datesOfEmployment})`;
-      workExperienceList.appendChild(listItem);
-    });
-
-    const skillsList = document.getElementById('skills');
-    cv.skills.forEach(skill => {
-      const listItem = document.createElement('li');
-      listItem.textContent = skill;
-      skillsList.appendChild(listItem);
-    });
-
-    const achievementsList = document.getElementById('achievementsAndAwards');
-    cv.achievementsAndAwards.forEach(achievement => {
-      const listItem = document.createElement('li');
-      listItem.textContent = achievement;
-      achievementsList.appendChild(listItem);
-    });
-
-    const projectsList = document.getElementById('projects');
-    cv.projects.forEach(project => {
-      const listItem = document.createElement('li');
-      listItem.textContent = `${project.title} - ${project.description} (${project.duration})`;
-      projectsList.appendChild(listItem);
-    });
-  </script>
+        button.addEventListener('click', generatePDF);
+    </script>  
 </body>
 </html>
