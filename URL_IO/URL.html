@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+<html lang = "eng">
+
+
+<head>
+</head>
+
+
+<body>
+    <!--  Headers -->
+    <h1>URL Password</h1>
+    <h2>The password is somewhere in this page. Find it, and add it to the end of the url (even the query).</h2>
+
+    <form id="passwordForm">
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        document.getElementById('passwordForm').addEventListener('submit', function(event) {
+          event.preventDefault(); // Prevent form submission
+      
+          const urlParams = new URLSearchParams(window.location.search);
+          const password = urlParams.get('password');
+          const correctPassword = 'PasswordZ'; // Replace with the actual password
+      
+          if (password === correctPassword) {
+            // Redirect to the desired page
+            window.location.href = 'https://youtu.be/dQw4w9WgXcQ';
+          } else {
+            // Display an error message
+            alert('Incorrect password. Please try again.');
+          }
+        });
+      </script>
+      
+      
+      
+   
+    <h8 style="color:rgb(255, 255, 255);">Add this to the end of the url: ?password=PasswordZ</h8>
+</body>
+</html>
